@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
       expect(user2.exactbooksearch(preacher1)).to include(user)
     end
     it 'returns empty array if friends dont have exact book' do
-      expect(user.exactbooksearch(preacher1)).to be_empty
+      expect(user.exactbooksearch(preacher1)).to_not include(user2)
     end
     xit 'can find a list for friends who have the book you want' do
       expect(user2.booksearch("Preacher")).to include(user)

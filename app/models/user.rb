@@ -43,7 +43,7 @@ class User < ApplicationRecord
   def exactbooksearch(book)
     friendswhohaveit = []
     self.friends.each do |friend|
-      if friend.books.find(book.id)
+      if friend.books.find_by(id: book.id)
         friendswhohaveit << friend
       end
     end
