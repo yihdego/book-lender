@@ -41,16 +41,28 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it 'has a book in its collection' do
+    before(:each) do
       user.books << preacher1
-      expect(user.books).to include(preacher1)
-    end
-    it 'has a friend' do
       user2.password = 'marley'
       user2.password_confirmation = 'marley'
       user2.save
       user.friends << user2
+      user2.friends << user
+    end
+    it 'has a book in its collection' do
+      expect(user.books).to include(preacher1)
+    end
+    it 'has a friend' do
       expect(user.friends).to include(user2)
+    end
+    it 'returns a list of books your friends have' do
+      expect(user2.friendsbooks).to be_an Array
+    end
+    it 'includes the book object' do
+      expect(user2.friendsbooks).to include(preacher1)
+    end
+    it 'can find a list for friends who have the book you want' do
+      expect(user2.booksearch("Preacher")).to include(user)
     end
   end
 end

@@ -23,4 +23,14 @@ class User < ApplicationRecord
     end
   end
 
+  def friendsbooks
+    books = []
+    self.friends.each do |friend|
+      friend.books.each do |book|
+        books << book
+      end
+    end
+    books
+  end
+
 end
