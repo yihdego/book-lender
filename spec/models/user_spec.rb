@@ -27,5 +27,15 @@ RSpec.describe User, type: :model do
       user2.save
       expect(user2).to be_valid
     end
+
+    it 'will return the user if password authentication passes' do
+      confirmation = User.login('amanuel@email.com', 'password')
+      expect(confirmation).to eq(user)
+    end
+
+    it 'returns nil if the user logged in wrong info' do
+      confirmation = User.login('amanuel@email.com', 'Password')
+      expect(confirmation).to be_nil
+    end
   end
 end
