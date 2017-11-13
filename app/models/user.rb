@@ -33,11 +33,16 @@ class User < ApplicationRecord
     books.uniq
   end
 
-  def genericbooksearch(title)
+  def booksearch(title)
+    friendsandbooks = []
     books = Book.where("title LIKE ?", "%#{title}%")
-    book.each do |book|
-      exactbooksearch(book)
+    books.each do |book|
+      listoffriends = exactbooksearch(book)
+      listoffriends.map do |friend|
+        friendsandbooks << { friend => book }
+      end
     end
+    friendsandbooks
   end
 
   def exactbooksearch(book)
