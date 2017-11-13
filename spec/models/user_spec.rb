@@ -41,9 +41,16 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it 'it has a book in its collection' do
+    it 'has a book in its collection' do
       user.books << preacher1
       expect(user.books).to include(preacher1)
+    end
+    it 'has a friend' do
+      user2.password = 'marley'
+      user2.password_confirmation = 'marley'
+      user2.save
+      user.friends << user2
+      expect(user.friends).to include(user2)
     end
   end
 end

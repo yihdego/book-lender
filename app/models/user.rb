@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :shelves
   has_many :books, through: :shelves
+
+  has_many :friendships
+  has_many :friends, :through => :friendships
   include BCrypt
   has_secure_password
 
