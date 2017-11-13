@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let!(:user) { User.create(username: 'yihdego', email: 'amanuel@email.com', password: 'password') }
   let!(:user2) { User.new(username: 'bob', email: 'bob@email.com') }
+  let!(:preacher1) { Book.create(title:"Preacher, Book 1: Gone to Texas", isbn: "9781401245429") }
   describe 'attributes' do
     it 'should have a username' do
       expect(user.username).to eq 'yihdego'
@@ -36,6 +37,13 @@ RSpec.describe User, type: :model do
     it 'returns nil if the user logged in wrong info' do
       confirmation = User.login('amanuel@email.com', 'Password')
       expect(confirmation).to be_nil
+    end
+  end
+
+  describe 'associations' do
+    it 'it has a book in its collection' do
+      user.books << preacher1
+      expect(user.books).to include(preacher1)
     end
   end
 end
