@@ -10,4 +10,15 @@ RSpec.describe Book, type: :model do
       expect(preacher1.isbn).to eq "9781401245429"
     end
   end
+
+  describe 'api call' do
+    it 'returns a json object of an api call' do
+      expect(Book.apisearch("Preacher").count).to_not eq 0
+    end
+    it 'returns books even when specific' do
+      results = Book.apisearch("Preacher, Book 1: Gone to Texas")
+      title = results[:items][0][:volumeInfo][:title]
+      expect(title).to eq("Preacher")
+    end
+  end
 end
