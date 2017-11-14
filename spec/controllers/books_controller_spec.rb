@@ -7,4 +7,10 @@ RSpec.describe BooksController, type: :controller do
       expect(response).to be_ok
     end
   end
+  describe 'search' do
+    before(:each) { get :search, params: { title: "Preacher" } }
+    it 'assigns an instance @books that fit the search results' do
+      expect(assigns[:results]).to include(:kind, :totalItems, :items)
+    end
+  end
 end
