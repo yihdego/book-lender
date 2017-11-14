@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   include HTTParty
 
   def self.apisearch(title)
-    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=#{title}+intitle&printType=books", format: :plain)
+    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=#{title}+intitle&printType=books&maxResults=25", format: :plain)
     JSON.parse(response.body, symbolize_names: true)
   end
 

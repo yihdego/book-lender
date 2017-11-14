@@ -1,5 +1,8 @@
-<% @results[:items].each do |book| %>
-  <li>
-    <%= book[:volumeInfo][:title] %>
-  </li>
-<% end %>
+<h2>Search Results</h2>
+  <% @results[:items].each do |book| %>
+  <ul>
+    <li>
+      Title: <%= book[:volumeInfo][:title] %> Authors: <%= book[:volumeInfo][:authors].join(", ") %>
+    </li>
+  </ul>
+  <% end %>
