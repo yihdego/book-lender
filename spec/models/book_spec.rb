@@ -12,7 +12,7 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'api call' do
-    xit 'returns a json object of an api call' do
+    it 'returns a json object of an api call' do
       expect(Book.apisearch("Preacher").count).to_not eq 0
     end
     it 'returns books even when specific' do
