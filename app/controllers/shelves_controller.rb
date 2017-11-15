@@ -8,6 +8,8 @@ class ShelvesController < ApplicationController
   def create
     user = User.find(session[:user_id])
     user.add_book(book_params)
+    user.save
+    redirect_to shelves_path
   end
 
   def destroy
