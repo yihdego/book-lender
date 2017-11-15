@@ -1,5 +1,10 @@
 class ShelvesController < ApplicationController
 
+  def index
+    user = User.find(session[:user_id])
+    @shelf = user.books
+  end
+
   def create
     user = User.find(session[:user_id])
     user.add_book(book_params)
