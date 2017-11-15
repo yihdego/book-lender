@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Shelf, type: :model do
-  let!(:user) { User.create(username: 'yihdego', email: 'amanuel@email.com', password: 'password') }
+  let(:user) { User.create(username: 'yihdego', email: 'amanuel@email.com', password: 'password') }
   let!(:user2) { User.new(username: 'bob', email: 'bob@email.com') }
   let!(:book) { {title: "JavaScript and JQuery", author: "Jon Duckett"} }
   let!(:preacher1) { Book.create(title:"Preacher, Book 1: Gone to Texas", author: "Garth Ennis & Steve Dillon") }
