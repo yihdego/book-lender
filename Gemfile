@@ -49,7 +49,6 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'webmock'
-  gem "factory_bot_rails", "~> 4.0"
   gem 'database_cleaner'
 end
 
