@@ -5,7 +5,7 @@ RSpec.describe Shelf, type: :model do
   let!(:user2) { User.new(username: 'bob', email: 'bob@email.com') }
   let!(:book) { {title: "JavaScript and JQuery", author: "Jon Duckett"} }
   let!(:preacher1) { Book.create(title:"Preacher, Book 1: Gone to Texas", author: "Garth Ennis & Steve Dillon") }
-  describe 'adding a book to a users shelf' do
+  describe 'changing books in a users collection' do
     it 'filters the api to grab title and author search result' do
       response = Book.apisearch('Javascript & Jquery')
       selected = response[:items][0][:volumeInfo]
@@ -22,5 +22,13 @@ RSpec.describe Shelf, type: :model do
       user.remove_book(shelf_id)
       expect(user.reload.books).to_not include preacher1
     end
+  end
+  describe 'lending a book to a friend' do
+    it 'can set a book to shared to a nonuser' do
+      expect(shared.friend).to eq user2
+    end
+    it 'can set a book to shared to a user'
+    it 'remembers what day you shared the book'
+    it 'can set book status to returned'
   end
 end

@@ -11,7 +11,7 @@ RSpec.describe ShelvesController, type: :controller do
       expect(response).to be_ok
     end
     it 'assigns an instance @shelf that is all the books one person claimed in their possession' do
-      expect(assigns[:shelf]).to include(preacher1)
+      expect(assigns[:shelf]).to include(shelf)
     end
   end
 
