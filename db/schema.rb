@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20171113204546) do
   create_table "shelves", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "book_id"
+    t.boolean "shared", default: false
+    t.integer "friend_id"
+    t.string "friend_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_shelves_on_book_id"
