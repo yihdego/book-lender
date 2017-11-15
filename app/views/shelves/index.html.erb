@@ -1,0 +1,9 @@
+<h2>Hello <%= User.find(session[:user_id]).username %></h2>
+<h3>Here are your books</h3>
+<% @shelf.each do |sb| %>
+  <ul>
+    <li>Title: <%= sb.book.title %> Author: <%= sb.book.author %></li>
+    <li><%= link_to "Remove", shelf_path(sb.id), :method => :delete %></li>
+    <li>Share</li>
+  </ul>
+<% end %>

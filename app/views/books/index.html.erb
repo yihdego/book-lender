@@ -1,5 +1,5 @@
-<% session[:userid] = "1" %>
-hello <%= User.find(session[:userid]).username %>
+<% session[:user_id] = "1" %>
+hello <%= User.find(session[:user_id]).username %>
 <%= form_tag(search_books_path, method: :get) do %>
   <%= text_field_tag :title %>
   <%= submit_tag 'Search' %>

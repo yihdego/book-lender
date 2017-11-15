@@ -2,7 +2,7 @@ class ShelvesController < ApplicationController
 
   def index
     user = User.find(session[:user_id])
-    @shelf = user.books
+    @shelf = user.shelves
   end
 
   def create
@@ -13,6 +13,7 @@ class ShelvesController < ApplicationController
   def destroy
     user = User.find(session[:user_id])
     user.remove_book(params[:id])
+    redirect_to shelves_path
   end
 
   private
