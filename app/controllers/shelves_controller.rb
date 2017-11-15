@@ -6,6 +6,8 @@ class ShelvesController < ApplicationController
   end
 
   def create
+    p params
+    p book_params
     user = User.find(session[:user_id])
     user.add_book(book_params)
     user.save

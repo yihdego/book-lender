@@ -4,6 +4,6 @@
     <li>
       Title: <%= book[:volumeInfo][:title] %> Authors: <%= book[:volumeInfo][:authors].join(", ") %>
     </li>
-    <li><%= button_to "Add", { action: "create", controller: "shelves" }, data: { title: book[:volumeInfo][:title], author: book[:volumeInfo][:authors].join(", ") } %></li>
+    <li><%= button_to "Add", shelves_path, params: { title: book[:volumeInfo][:title], author: book[:volumeInfo][:authors].join(", ") } %></li>
   <% end %>
 </ul>
