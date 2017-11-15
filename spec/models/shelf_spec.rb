@@ -3,9 +3,15 @@ require 'rails_helper'
 RSpec.describe Shelf, type: :model do
   let!(:user) { User.create(username: 'yihdego', email: 'amanuel@email.com', password: 'password') }
   let!(:user2) { User.new(username: 'bob', email: 'bob@email.com') }
-  let!(:book) { {title: "Javascript & JQuery", author: "Jon Duckett"} }
+  let!(:book) { {title: "JavaScript and JQuery", author: "Jon Duckett"} }
   describe 'adding a book to a users shelf' do
-    it 'can add a book to a users collection from the api' do
+    it 'filters the api to grab title and author search result' do
+      response = Book.apisearch('Javascript & Jquery')
+      selected = response[:items][0][:volumeInfo]
+      searchedbook = { title: selected[:title], author: selected[:authors].join(", ") }
+      expect(searchedbook).to eq book
+    end
+    it 'can add a book to a users collection' do
       user.add_book(book)
       expect(user.books).to include Book
     end
