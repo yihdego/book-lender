@@ -60,4 +60,8 @@ class User < ApplicationRecord
     Shelf.create(user: self, book: book)
   end
 
+  def remove_book(shelf_id)
+    Shelf.find(shelf_id).destroy
+  end
+
 end
