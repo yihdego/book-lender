@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let!(:user) { User.create(username: 'yihdego', email: 'amanuel@email.com', password: 'password') }
   let!(:user2) { User.new(username: 'bob', email: 'bob@email.com') }
-  let!(:preacher1) { Book.create(title:"Preacher, Book 1: Gone to Texas", isbn: "9781401245429") }
+  let!(:preacher1) { Book.create(title:"Preacher, Book 1: Gone to Texas", author: "Garth Ennis & Steve Dillon") }
   describe 'attributes' do
     it 'should have a username' do
       expect(user.username).to eq 'yihdego'
