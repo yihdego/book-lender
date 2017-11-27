@@ -55,4 +55,13 @@ class User < ApplicationRecord
     friendswhohaveit
   end
 
+  def add_book(args)
+    book = Book.find_or_create_by(args)
+    Shelf.create(user: self, book: book)
+  end
+
+  def remove_book(shelf_id)
+    Shelf.find(shelf_id).destroy
+  end
+
 end
